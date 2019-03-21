@@ -69,23 +69,14 @@ public class Calculator {
         valueField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (e.getKeyChar() == '.'
-                        && valueField.getText().indexOf('.') > -1) {
-                    e.consume();
-                    return;
-                }
-                if (e.getKeyChar() == '-'
-                        && valueField.getText().indexOf('-') > -1) {
-                    e.consume();
-                    return;
-                }
                 if (!((e.getKeyChar() >= '0' && e.getKeyChar() <= '9') || e
-                        .getKeyChar() == '.'))
+                        .getKeyChar() == '.')){
                     e.consume();
+                    alertLabel.setText("Type only numbers!");
             }
-        });
+        };
+    });
     }
-
     private void prepareMenuBar(){
         JMenuBar menuBar = new JMenuBar();
         JMenu infoMenu = new JMenu("Info");
