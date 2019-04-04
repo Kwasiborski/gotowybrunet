@@ -35,7 +35,7 @@ public class Calculator {
 
         calculatorFrame.setContentPane(calculator.calculatorPanel);
         calculatorFrame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-
+        calculatorFrame.setResizable(false);
         calculatorFrame.pack();
         calculatorFrame.setVisible(true);
     }
@@ -62,22 +62,24 @@ public class Calculator {
 
         resultButton.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
-               calculateResult(bruttoToNettoChosen);
+                calculateResult(bruttoToNettoChosen);
             }
         });
 
         valueField.addKeyListener(new KeyAdapter() {
             @Override
             public void keyTyped(KeyEvent e) {
-                if (!((e.getKeyChar() >= '0' && e.getKeyChar() <= '9') || e
-                        .getKeyChar() == '.')){
+                if (!((e.getKeyChar() >= '0' && e.getKeyChar() <= '9') || e.getKeyChar() == '.'|| e.getKeyChar()==8)){
                     e.consume();
                     alertLabel.setText("Type only numbers!");
+                }else {
+                    alertLabel.setText("");
+                }
             }
-        };
-    });
+        });
     }
-    private void prepareMenuBar(){
+
+    private void prepareMenuBar() {
         JMenuBar menuBar = new JMenuBar();
         JMenu infoMenu = new JMenu("Info");
         menuBar.add(infoMenu);
